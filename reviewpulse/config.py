@@ -28,3 +28,7 @@ HOTEL_NAME = "Hotel Dorado Plaza"
 HISTORY_DIR = ROOT / "history"   # aquí se guarda el historial, los resúmenes y las acciones
 TOP_TOPICS_IN_REPORT = 3         # cuántos temas prioritarios aparecen con acciones sugeridas
 MIN_TOPIC_REVIEWS = 5            # un tema con menos reseñas que esto se marca "poca muestra"
+
+# --- Aprendizaje con correcciones (feedback.py, retrain.py) ---
+FEEDBACK_DIR = ROOT / "data" / "feedback"   # cola de revisión y correcciones (contienen textos de huéspedes)
+RETRAIN_MAX_DROP = 0.03                     # el modelo nuevo no puede empeorar más que esto en el examen fijo (test.csv)
