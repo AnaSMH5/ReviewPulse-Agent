@@ -2,29 +2,30 @@
 import pandas as pd
 
 from reviewpulse.analysis import compare
+from reviewpulse.metrics import weekly_series
 
 
 def _reviews(inicio, ratings):
+    """Una reseña por día empezando en `inicio`."""
     fechas = pd.date_range(inicio, periods=len(ratings), freq="D")
-    return pd.DataFrame({"created_at": fechas, "rating": ratings})
+    semana = fechas.normalize() - pd.to_timedelta(fechas.weekday, unit="D")
+    return pd.DataFrame({"created_at": fechas, "week_start": semana, "rating": ratings})
 
 
 def test_alerta_cuando_empeora():
-    antes = _reviews("2025-01-01", [5] * 18 + [1] * 2)      # ~10% negativas
-    ahora = _reviews("2025-07-01", [1] * 12 + [5] * 8)      # 60% negativas
-    df = pd.concat([antes, ahora])
-    r = compare(df, pd.Timestamp("2025-07-20"))
+    antes = _reviews("2025-01-06", [5] * 90 + [1] * 10)       # 10% negativas, ~14 semanas
+    ahora = _reviews("2025-07-14", [1] * 60 + [5] * 40)       # 60% negativas
+    serie = weekly_series(pd.concat([antes, ahora]))
+    r = compare(serie, serie.index[-1])
     assert r["alert"] is True
 
 
 def test_sin_alerta_si_no_cambia():
-    antes = _reviews("2025-01-01", [5, 5, 1, 5, 4, 5, 5, 4, 5, 1] * 2)
-    ahora = _reviews("2025-07-01", [5, 5, 1, 5, 4, 5, 5, 4, 5, 1] * 2)
-    r = compare(pd.concat([antes, ahora]), pd.Timestamp("2025-07-20"))
-    assert r["alert"] is False
+    patron = [5, 5, 1, 5, 4, 5, 5, 4, 5, 1] * 10
+    serie = weekly_series(pd.concat([_reviews("2025-01-06", patron), _reviews("2025-07-14", patron)]))
+    assert compare(serie, serie.index[-1])["alert"] is False
 
 
 def test_pocas_reviews_no_concluye():
-    df = _reviews("2025-07-01", [1, 1, 1])
-    r = compare(df, pd.Timestamp("2025-07-03"))
-    assert r["status"] == "datos_insuficientes"
+    serie = weekly_series(_reviews("2025-07-07", [1, 1, 1]))
+    assert compare(serie, serie.index[-1])["status"] == "datos_insuficientes"
