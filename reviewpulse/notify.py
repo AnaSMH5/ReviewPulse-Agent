@@ -1,4 +1,4 @@
-"""PASO 7 - Avisar al gerente y publicar el resumen en el sistema de reputación.
+"""Avisar al gerente y publicar el resumen en el sistema de reputación.
 
 SEGURO POR DEFECTO: si no configuras nada, NO se envía nada. El aviso se imprime en pantalla
 y se guarda en history/outbox/ (modo "dry_run"). Para enviar de verdad, define variables de

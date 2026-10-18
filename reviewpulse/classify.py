@@ -1,4 +1,4 @@
-"""PASO 4 - Clasificar reseñas: polaridad (1-5) y tema principal.
+"""Clasificar reseñas: polaridad (1-5) y tema principal.
 
 Hay DOS modelos independientes, ambos del mismo tipo:
     texto  ->  [TF-IDF]  ->  [Regresión logística]  ->  polaridad  (1..5)
@@ -35,8 +35,10 @@ def make_model():
     class_weight="balanced": como hay muchas más reseñas de 5★ que de 2★, el modelo
     le da más peso a las clases poco frecuentes para no ignorarlas.
     """
-    palabras = TfidfVectorizer(ngram_range=(1, 2), min_df=2, sublinear_tf=True, strip_accents="unicode")
-    letras = TfidfVectorizer(analyzer="char_wb", ngram_range=(2, 5), min_df=2, sublinear_tf=True, strip_accents="unicode")
+    palabras = TfidfVectorizer(ngram_range=(
+        1, 2), min_df=2, sublinear_tf=True, strip_accents="unicode")
+    letras = TfidfVectorizer(analyzer="char_wb", ngram_range=(
+        2, 5), min_df=2, sublinear_tf=True, strip_accents="unicode")
     return make_pipeline(
         make_union(palabras, letras),
         LogisticRegression(C=10, max_iter=3000, class_weight="balanced"),
@@ -56,7 +58,8 @@ def fit(df: pd.DataFrame) -> tuple:
     sirve para el modelo de tema, y una reseña con rating sin tema sirve para el de polaridad.
     """
     con_rating = df.dropna(subset=["rating"])
-    pol = make_model().fit(con_rating["text"], con_rating["rating"].astype(int))
+    pol = make_model().fit(con_rating["text"],
+                           con_rating["rating"].astype(int))
     con_tema = df.dropna(subset=["main_topic"])
     topic = make_model().fit(con_tema["text"], con_tema["main_topic"])
     return pol, topic
@@ -107,11 +110,13 @@ def predict(df: pd.DataFrame, models_dir=None) -> pd.DataFrame:
     """
     pol_path, topic_path = _paths(models_dir)
     if not (pol_path.exists() and topic_path.exists()):
-        raise FileNotFoundError("No hay modelos guardados. Ejecuta primero:  python train.py")
+        raise FileNotFoundError(
+            "No hay modelos guardados. Ejecuta primero:  python train.py")
 
     pol, topic = joblib.load(pol_path), joblib.load(topic_path)
     out = df.copy()
-    valido = out["text"].map(lambda t: isinstance(t, str) and t.strip() != "").astype(bool)
+    valido = out["text"].map(lambda t: isinstance(
+        t, str) and t.strip() != "").astype(bool)
     out["valid_text"] = valido
     out["polarity"] = pd.array([pd.NA] * len(out), dtype="Int64")
     out["polarity_conf"] = np.nan
@@ -120,15 +125,18 @@ def predict(df: pd.DataFrame, models_dir=None) -> pd.DataFrame:
 
     if valido.any():
         texto = out.loc[valido, "text"]
-        p = pol.predict_proba(texto)                          # probabilidad de cada rating
-        out.loc[valido, "polarity"] = pol.classes_[p.argmax(axis=1)].astype(int)
+        # probabilidad de cada rating
+        p = pol.predict_proba(texto)
+        out.loc[valido, "polarity"] = pol.classes_[
+            p.argmax(axis=1)].astype(int)
         out.loc[valido, "polarity_conf"] = p.max(axis=1)
         t = topic.predict_proba(texto)
         out.loc[valido, "topic"] = topic.classes_[t.argmax(axis=1)]
         out.loc[valido, "topic_conf"] = t.max(axis=1)
 
     # Si el texto no es válido o el modelo duda del tema, se marca para que una persona lo revise
-    out["needs_review"] = ~valido | (out["topic_conf"] < config.TOPIC_REVIEW_THRESHOLD)
+    out["needs_review"] = ~valido | (
+        out["topic_conf"] < config.TOPIC_REVIEW_THRESHOLD)
     return out
 
 
@@ -181,4 +189,37 @@ def evaluate(df: pd.DataFrame) -> dict:
 def save_metrics(metrics: dict, path=None) -> None:
     path = path or config.REPORTS / "classifier_metrics.json"
     path.parent.mkdir(exist_ok=True)
-    path.write_text(json.dumps(metrics, indent=2, ensure_ascii=False), encoding="utf-8")
+    path.write_text(json.dumps(metrics, indent=2,
+                    ensure_ascii=False), encoding="utf-8")
+
+
+def evaluate_holdout(train_df: pd.DataFrame, test_df: pd.DataFrame) -> dict:
+    """Entrena con train_df y mide en test_df (reseñas que el modelo nunca vio)."""
+    pol = make_model().fit(train_df["text"], train_df["rating"])
+    y, p = test_df["rating"].to_numpy(), pol.predict(test_df["text"])
+    neg_real, neg_pred = y <= config.NEGATIVE_MAX_RATING, p <= config.NEGATIVE_MAX_RATING
+    y3 = np.where(y <= 2, 0, np.where(y == 3, 1, 2))
+    p3 = np.where(p <= 2, 0, np.where(p == 3, 1, 2))
+    polaridad = {
+        "n_train": int(len(train_df)), "n_test": int(len(y)),
+        "accuracy": accuracy_score(y, p),
+        "baseline_accuracy": float(pd.Series(y).value_counts(normalize=True).iloc[0]),
+        "accuracy_within_1": float(np.mean(np.abs(y - p) <= 1)),
+        "f1_macro": f1_score(y, p, average="macro"),
+        "accuracy_3_clases": accuracy_score(y3, p3),
+        "negativas_precision": precision_score(neg_real, neg_pred),
+        "negativas_recall": recall_score(neg_real, neg_pred),
+    }
+    tr = train_df.dropna(subset=["main_topic"])
+    te = test_df.dropna(subset=["main_topic"])
+    topic = make_model().fit(tr["text"], tr["main_topic"])
+    pt = topic.predict(te["text"])
+    tema = {
+        "n_test": int(len(te)),
+        "accuracy_estricta": accuracy_score(te["main_topic"], pt),
+        "baseline_accuracy": float(te["main_topic"].value_counts(normalize=True).iloc[0]),
+        "f1_macro": f1_score(te["main_topic"], pt, average="macro"),
+        "accuracy_permisiva": float(np.mean([pred in lista for pred, lista in zip(pt, te["topics"])])),
+    }
+    return {"polaridad": {k: round(float(v), 3) for k, v in polaridad.items()},
+            "tema": {k: round(float(v), 3) for k, v in tema.items()}}

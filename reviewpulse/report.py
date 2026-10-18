@@ -1,4 +1,4 @@
-"""PASO 5 - Armar el resumen semanal por tema.
+"""Armar el resumen semanal por tema.
 
 Entrada : las reseñas (DataFrame) y el resultado de analysis.compare(serie, semana)
 Salida  : un diccionario con todo lo necesario:
@@ -33,7 +33,8 @@ TOPIC_ACTIONS = {
     "Precio / relación calidad-precio": "Revisar tarifas, cargos adicionales y el valor percibido frente a lo que se ofrece.",
 }
 DEFAULT_ACTION = "Revisar manualmente las reseñas negativas de este tema."
-STATUS_LABEL = {"alerta": "ALERTA", "normal": "Normal", "datos_insuficientes": "Datos insuficientes"}
+STATUS_LABEL = {"alerta": "ALERTA", "normal": "Normal",
+                "datos_insuficientes": "Datos insuficientes"}
 
 
 # ---------------------------------------------------------------- utilidades
@@ -69,7 +70,8 @@ def _first_col(df, names):
     for n in names:
         if n in df.columns:
             return n
-    raise ValueError(f"El DataFrame necesita alguna de estas columnas: {names}")
+    raise ValueError(
+        f"El DataFrame necesita alguna de estas columnas: {names}")
 
 
 def _pct(x):
@@ -113,13 +115,28 @@ def _topic_rows(cur_df, prev_df, tcol, pcol, week):
             "prev_n": p["n"], "prev_negativas": p["n_negative"],
         })
     # primero los temas con más negativas; si empatan, el que más subió
-    rows.sort(key=lambda r: (-r["negativas"], -(r["negativas"] - r["prev_negativas"])))
+    rows.sort(key=lambda r: (-r["negativas"], -
+              (r["negativas"] - r["prev_negativas"])))
     return rows
 
 
 # ---------------------------------------------------------------- el reporte
 def build_report(df: pd.DataFrame, result: dict, include_examples: bool = True) -> dict:
-    week_start = pd.Timestamp(result["week"])                    # el lunes de la semana analizada
+    if "polarity" in df.columns and "rating" in df.columns:
+        df["_analysis_polarity"] = df["polarity"].fillna(df["rating"])
+    elif "polarity" in df.columns:
+        df["_analysis_polarity"] = df["polarity"]
+    else:
+        df["_analysis_polarity"] = df["rating"]
+    if "topic" in df.columns and "main_topic" in df.columns:
+        df["_analysis_topic"] = df["topic"].fillna(df["main_topic"])
+    elif "topic" in df.columns:
+        df["_analysis_topic"] = df["topic"]
+    else:
+        df["_analysis_topic"] = df["main_topic"]
+
+    # el lunes de la semana analizada
+    week_start = pd.Timestamp(result["week"])
     week = week_start.date().isoformat()
     week_end = (week_start + pd.Timedelta(days=6)).date().isoformat()
     w = config.WINDOW_WEEKS
@@ -127,35 +144,39 @@ def build_report(df: pd.DataFrame, result: dict, include_examples: bool = True) 
     # Las mismas dos ventanas que usó analysis.compare()
     cur_df = _reviews_in_weeks(df, week_start, w)
     prev_df = _reviews_in_weeks(df, week_start - pd.Timedelta(weeks=w), w)
-    tcol = _first_col(df, ["topic", "main_topic"])      # "topic" = predicho, "main_topic" = etiquetado
-    pcol = "polarity" if "polarity" in df.columns else "rating"
+    tcol = "_analysis_topic"
+    pcol = "_analysis_polarity"
     ccol = "text" if "text" in df.columns else None
 
     cur, prev = result["current"], result["previous"]
     status = result["status"]
     topics = _topic_rows(cur_df, prev_df, tcol, pcol, week)
-    priority = [t for t in topics if t["negativas"] > 0][: config.TOP_TOPICS_IN_REPORT]
+    priority = [t for t in topics if t["negativas"]
+                > 0][: config.TOP_TOPICS_IN_REPORT]
 
     # ---- texto ----
     L = [f"# Resumen semanal ReviewPulse - {config.HOTEL_NAME}",
          f"Semana del **{week}** al **{week_end}** | ventanas de {w} semanas", "",
-         f"## Estado: {STATUS_LABEL.get(status, status)}", result["reason"] or "Sin cambios relevantes.", "",
-         f"## Tono general (últimas {w} semanas vs {w} semanas anteriores)", "",
-         "| | Anterior | Actual | Cambio |", "|---|---|---|---|",
-         f"| Reseñas | {prev['n']} | {cur['n']} | {cur['n'] - prev['n']:+d} |",
-         f"| % negativas | {_pct(prev['pct_negative'])} | {_pct(cur['pct_negative'])} | "
-         f"{_delta(cur['pct_negative'], prev['pct_negative'], 100, ' pts')} |",
-         f"| Rating medio | {_num(prev['mean_rating'])} | {_num(cur['mean_rating'])} | "
-         f"{_delta(cur['mean_rating'], prev['mean_rating'])} |", ""]
+         f"## Estado: {STATUS_LABEL.get(status, status)}", result[
+        "reason"] or "Sin cambios relevantes.", "",
+        f"## Tono general (últimas {w} semanas vs {w} semanas anteriores)", "",
+        "| | Anterior | Actual | Cambio |", "|---|---|---|---|",
+        f"| Reseñas | {prev['n']} | {cur['n']} | {cur['n'] - prev['n']:+d} |",
+        f"| % negativas | {_pct(prev['pct_negative'])} | {_pct(cur['pct_negative'])} | "
+        f"{_delta(cur['pct_negative'], prev['pct_negative'], 100, ' pts')} |",
+        f"| Rating medio | {_num(prev['mean_rating'])} | {_num(cur['mean_rating'])} | "
+        f"{_delta(cur['mean_rating'], prev['mean_rating'])} |", ""]
     if status == "datos_insuficientes":
         L += ["> Hay pocas reseñas para concluir si el hotel mejora o empeora. Los números de abajo son solo informativos.", ""]
 
     L += ["## Por tema (ventana actual)", ""]
     if topics:
-        L += ["| Tema | Reseñas | Negativas | % neg. | Negativas ventana anterior | Nota |", "|---|---|---|---|---|---|"]
+        L += ["| Tema | Reseñas | Negativas | % neg. | Negativas ventana anterior | Nota |",
+              "|---|---|---|---|---|---|"]
         for t in topics:
             nota = "poca muestra" if t["n"] < config.MIN_TOPIC_REVIEWS else ""
-            L.append(f"| {t['topic']} | {t['n']} | {t['negativas']} | {_pct(t['pct_negativas'])} | {t['prev_negativas']} | {nota} |")
+            L.append(
+                f"| {t['topic']} | {t['n']} | {t['negativas']} | {_pct(t['pct_negativas'])} | {t['prev_negativas']} | {nota} |")
     else:
         L.append("No hubo reseñas en la ventana actual.")
     L.append("")
@@ -170,16 +191,18 @@ def build_report(df: pd.DataFrame, result: dict, include_examples: bool = True) 
                      f"(ventana anterior: {t['prev_negativas']}).")
             L.append(f"   - Acción sugerida: {accion}")
             if include_examples and ccol:
-                g = cur_df[cur_df[tcol] == t["topic"]].sort_values([pcol, "created_at"], ascending=[True, False])
+                g = cur_df[cur_df[tcol] == t["topic"]].sort_values(
+                    [pcol, "created_at"], ascending=[True, False])
                 if len(g) and g.iloc[0][pcol] <= config.NEGATIVE_MAX_RATING:
                     L.append(f"   - Ejemplo: \"{_snippet(g.iloc[0][ccol])}\"")
         L.append("")
     L.append("_Las acciones son sugerencias; la decisión es de la gerencia._")
 
     # ---- mensaje corto (sin textos de huéspedes) ----
-    top = ", ".join(f"{t['topic']} ({t['negativas']})" for t in priority) or "sin negativas"
+    top = ", ".join(
+        f"{t['topic']} ({t['negativas']})" for t in priority) or "sin negativas"
     short = f"ReviewPulse | {config.HOTEL_NAME} | {STATUS_LABEL.get(status, status).upper()} semana del {week}: " \
-            f"{result['reason']} Temas con más negativas: {top}."
+        f"{result['reason']} Temas con más negativas: {top}."
 
     weekly_row = {
         "week": week, "status": status, "alert": bool(result["alert"]), "reason": result["reason"],

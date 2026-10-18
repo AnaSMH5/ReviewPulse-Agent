@@ -1,0 +1,5 @@
+﻿id;text;rating;topic_predicted;topic_conf;topic_correct
+9000001;Piscina cerrada. La piscina estuvo cerrada tres días y en la playa no había sillas disponibles.;2;?;0.1;TEMA INVENTADO
+9000002;Muy amables. El personal de recepción fue muy amable y nos ayudó con todo desde el primer momento.;5;?;0.1;
+9000004;Ruido. El ascensor estaba dañado y las instalaciones necesitan mantenimiento urgente.;2;?;0.1;
+9000005;Cobro extra. Nos cobraron un impuesto adicional que no estaba en la reserva, caro para lo que ofrecen.;1;?;0.1;

@@ -1,0 +1,23 @@
+{"ts": "2026-10-18T23:41:06.365+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "inicio_ciclo", "estado": "Inactivo"}
+{"ts": "2026-10-18T23:41:06.368+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "error_fuente", "estado": "Inactivo", "detalle": "fuente no disponible (falla forzada)"}
+{"ts": "2026-10-18T23:41:06.369+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "percepcion", "estado": "Inactivo", "fuente": false, "n": null, "comparacion": null}
+{"ts": "2026-10-18T23:41:06.370+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "decision", "estado": "Inactivo", "accion": "consultar_fuente", "percepcion": {"fuente": false, "n": null, "comparacion": null}, "razon": "empieza el ciclo semanal: hay que pedir las reseñas nuevas"}
+{"ts": "2026-10-18T23:41:06.376+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "accion", "estado": "Falla_fuente", "accion": "consultar_fuente", "desde": "Inactivo", "hacia": "Falla_fuente"}
+{"ts": "2026-10-18T23:41:06.378+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "percepcion", "estado": "Falla_fuente", "fuente": false, "n": null, "comparacion": null}
+{"ts": "2026-10-18T23:41:06.380+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "decision", "estado": "Falla_fuente", "accion": "reintentar", "percepcion": {"fuente": false, "n": null, "comparacion": null}, "razon": "la fuente no respondió: reintentar mientras queden intentos"}
+{"ts": "2026-10-18T23:41:06.381+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "reintento", "estado": "Falla_fuente", "numero": 1, "max_retries": 2}
+{"ts": "2026-10-18T23:41:06.384+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "accion", "estado": "Inactivo", "accion": "reintentar", "desde": "Falla_fuente", "hacia": "Inactivo"}
+{"ts": "2026-10-18T23:41:06.388+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "error_fuente", "estado": "Inactivo", "detalle": "fuente no disponible (falla forzada)"}
+{"ts": "2026-10-18T23:41:06.389+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "percepcion", "estado": "Inactivo", "fuente": false, "n": null, "comparacion": null}
+{"ts": "2026-10-18T23:41:06.391+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "decision", "estado": "Inactivo", "accion": "consultar_fuente", "percepcion": {"fuente": false, "n": null, "comparacion": null}, "razon": "empieza el ciclo semanal: hay que pedir las reseñas nuevas"}
+{"ts": "2026-10-18T23:41:06.394+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "accion", "estado": "Falla_fuente", "accion": "consultar_fuente", "desde": "Inactivo", "hacia": "Falla_fuente"}
+{"ts": "2026-10-18T23:41:06.398+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "percepcion", "estado": "Falla_fuente", "fuente": false, "n": null, "comparacion": null}
+{"ts": "2026-10-18T23:41:06.399+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "decision", "estado": "Falla_fuente", "accion": "reintentar", "percepcion": {"fuente": false, "n": null, "comparacion": null}, "razon": "la fuente no respondió: reintentar mientras queden intentos"}
+{"ts": "2026-10-18T23:41:06.402+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "reintento", "estado": "Falla_fuente", "numero": 2, "max_retries": 2}
+{"ts": "2026-10-18T23:41:06.403+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "accion", "estado": "Inactivo", "accion": "reintentar", "desde": "Falla_fuente", "hacia": "Inactivo"}
+{"ts": "2026-10-18T23:41:06.404+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "error_fuente", "estado": "Inactivo", "detalle": "fuente no disponible (falla forzada)"}
+{"ts": "2026-10-18T23:41:06.406+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "percepcion", "estado": "Inactivo", "fuente": false, "n": null, "comparacion": null}
+{"ts": "2026-10-18T23:41:06.408+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "decision", "estado": "Inactivo", "accion": "consultar_fuente", "percepcion": {"fuente": false, "n": null, "comparacion": null}, "razon": "empieza el ciclo semanal: hay que pedir las reseñas nuevas"}
+{"ts": "2026-10-18T23:41:06.409+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "accion", "estado": "Falla_fuente", "accion": "consultar_fuente", "desde": "Inactivo", "hacia": "Falla_fuente"}
+{"ts": "2026-10-18T23:41:06.411+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "abandono", "estado": "Falla_fuente", "motivo": "reintentos agotados", "intentos": 3}
+{"ts": "2026-10-18T23:41:06.421+00:00", "run_id": "55814e78", "semana": "2021-05-31", "tipo": "fin_ciclo", "estado": "Falla_fuente", "completo": false}

@@ -1,4 +1,4 @@
-"""PASO 6 - Guardar el historial: lo que el agente calculó, dijo e hizo cada semana.
+"""Guardar el historial: lo que el agente calculó, dijo e hizo cada semana.
 
 Todo queda en la carpeta history/ (config.HISTORY_DIR):
     weekly_history.csv      una fila por semana (números globales y estado)

@@ -1,0 +1,12 @@
+{"ts": "2026-10-18T23:41:07.219+00:00", "run_id": "e441c2c5", "semana": "2021-05-31", "tipo": "inicio_ciclo", "estado": "Inactivo"}
+{"ts": "2026-10-18T23:41:07.255+00:00", "run_id": "e441c2c5", "semana": "2021-05-31", "tipo": "percepcion", "estado": "Inactivo", "fuente": true, "n": 1, "comparacion": null}
+{"ts": "2026-10-18T23:41:07.256+00:00", "run_id": "e441c2c5", "semana": "2021-05-31", "tipo": "decision", "estado": "Inactivo", "accion": "consultar_fuente", "percepcion": {"fuente": true, "n": 1, "comparacion": null}, "razon": "empieza el ciclo semanal: hay que pedir las reseñas nuevas"}
+{"ts": "2026-10-18T23:41:07.335+00:00", "run_id": "e441c2c5", "semana": "2021-05-31", "tipo": "accion", "estado": "Lote_recibido", "accion": "consultar_fuente", "desde": "Inactivo", "hacia": "Lote_recibido"}
+{"ts": "2026-10-18T23:41:07.336+00:00", "run_id": "e441c2c5", "semana": "2021-05-31", "tipo": "percepcion", "estado": "Lote_recibido", "fuente": true, "n": 1, "comparacion": null}
+{"ts": "2026-10-18T23:41:07.339+00:00", "run_id": "e441c2c5", "semana": "2021-05-31", "tipo": "decision", "estado": "Lote_recibido", "accion": "preprocesar", "percepcion": {"fuente": true, "n": 1, "comparacion": null}, "razon": "hay reseñas sin procesar: limpiar texto y revisar metadatos"}
+{"ts": "2026-10-18T23:41:07.350+00:00", "run_id": "e441c2c5", "semana": "2021-05-31", "tipo": "preproceso", "estado": "Lote_recibido", "recibidas": 1, "sin_texto": 1, "meta_incompleta": 0, "quedan": 0}
+{"ts": "2026-10-18T23:41:07.353+00:00", "run_id": "e441c2c5", "semana": "2021-05-31", "tipo": "accion", "estado": "Sin_reseñas", "accion": "preprocesar", "desde": "Lote_recibido", "hacia": "Sin_reseñas"}
+{"ts": "2026-10-18T23:41:07.358+00:00", "run_id": "e441c2c5", "semana": "2021-05-31", "tipo": "percepcion", "estado": "Sin_reseñas", "fuente": true, "n": 1, "comparacion": null}
+{"ts": "2026-10-18T23:41:07.360+00:00", "run_id": "e441c2c5", "semana": "2021-05-31", "tipo": "decision", "estado": "Sin_reseñas", "accion": "registrar_semana_vacía", "percepcion": {"fuente": true, "n": 1, "comparacion": null}, "razon": "la semana no tuvo reseñas: dejar constancia"}
+{"ts": "2026-10-18T23:41:07.515+00:00", "run_id": "e441c2c5", "semana": "2021-05-31", "tipo": "accion", "estado": "Resumen_completado", "accion": "registrar_semana_vacía", "desde": "Sin_reseñas", "hacia": "Resumen_completado"}
+{"ts": "2026-10-18T23:41:07.518+00:00", "run_id": "e441c2c5", "semana": "2021-05-31", "tipo": "fin_ciclo", "estado": "Resumen_completado", "completo": true}

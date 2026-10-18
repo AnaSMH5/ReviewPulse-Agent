@@ -1,0 +1,4 @@
+week,status,alert,reason,cur_n,cur_negativas,cur_pct_negativas,cur_rating_medio,prev_n,prev_negativas,prev_pct_negativas,prev_rating_medio,delta_pct_negativas,p_value,generated_at
+2025-03-17,sin_reseñas,False,Semana sin reseñas nuevas; se muestra el estado de las ventanas vigentes.,13,9,0.6923076923076923,2.230769230769231,13,5,0.3846153846153846,3.0,0.3076923076923076,0.1188719881545295,2026-10-18T23:43:58+00:00
+2025-03-24,sin_reseñas,False,Semana sin reseñas nuevas; se muestra el estado de las ventanas vigentes.,13,9,0.6923076923076923,2.230769230769231,13,5,0.3846153846153846,3.0,0.3076923076923076,0.1188719881545295,2026-10-18T23:43:58+00:00
+2025-03-31,normal,False,,15,9,0.6,2.6,13,5,0.38461538461538464,3.0,0.21538461538461534,0.22474088033382691,2026-10-18T23:43:58+00:00

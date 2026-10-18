@@ -1,38 +1,29 @@
-"""Entrena el clasificador. Ejecuta:  python train.py
+"""Entrena y EVALÚA los modelos de polaridad y tema.
 
-1) Mide qué tan bien acierta (validación cruzada)  -> reports/classifier_metrics.json
-2) Entrena con todas las reseñas y guarda          -> models/polarity.joblib, models/topic.joblib
-3) Prueba el modelo con reseñas inventadas
+  python train.py        -> entrena solo con train.csv (210), evalúa en test.csv (90) y con
+                            validación cruzada sobre las 300; guarda reports/classifier_metrics.json
+  python train.py --all  -> igual, pero el modelo guardado se entrena con las 300 (despliegue)
 """
-import pandas as pd
+import argparse
 
-from reviewpulse import classify
-from reviewpulse.data import load_reviews
-
-
-def main():
-    df = load_reviews()                      # reviews_con_temas.csv (trae rating y temas)
-
-    print("Evaluando (puede tardar ~1 minuto)...")
-    m = classify.evaluate(df)
-    classify.save_metrics(m)
-    for bloque, vals in m.items():
-        print(f"\n{bloque.upper()}")
-        for k, v in vals.items():
-            print(f"  {k:22s} {v}")
-
-    print("\nEntrenando con todas las reseñas y guardando modelos...")
-    classify.train(df)
-
-    ejemplos = pd.DataFrame({"text": [
-        "Habitación sucia, con cucarachas en el baño y el aire acondicionado dañado. Pésimo.",
-        "Excelente atención del personal, muy amables, y la comida deliciosa. Volveremos.",
-        "Buena ubicación frente a la playa pero el desayuno es repetitivo.",
-    ]})
-    print("\nPrueba con reseñas nuevas:")
-    res = classify.predict(ejemplos)
-    print(res[["polarity", "topic", "topic_conf", "needs_review"]].round(2).to_string())
-
+from reviewpulse import classify, config
+from reviewpulse.data import load_reviews, load_model_split
 
 if __name__ == "__main__":
-    main()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--all", action="store_true",
+                    help="guardar el modelo entrenado con las 300 reseñas")
+    a = ap.parse_args()
+
+    todas, train, test = load_reviews(), load_model_split(
+        "train"), load_model_split("test")
+    classify.train(todas if a.all else train)
+    metricas = {"modelo_guardado_entrenado_con": len(todas) if a.all else len(train),
+                "validacion_cruzada_300": classify.evaluate(todas),
+                "holdout_test": classify.evaluate_holdout(train, test)}
+    classify.save_metrics(metricas)
+    print(f"Modelos guardados en {config.MODELS_DIR}")
+    print(f"Métricas en {config.REPORTS / 'classifier_metrics.json'}")
+    for k in ("validacion_cruzada_300", "holdout_test"):
+        print(k, "polaridad:", metricas[k]["polaridad"]["accuracy"],
+              "| tema estricta:", metricas[k]["tema"]["accuracy_estricta"])
