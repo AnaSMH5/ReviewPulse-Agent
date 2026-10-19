@@ -1,0 +1,6 @@
+# Para trabajar en local con los notebooks (la app desplegada NO los necesita):  pip install -r requirements-dev.txt
+-r requirements.txt
+matplotlib>=3.8
+seaborn>=0.13
+jupyterlab>=4.0
+ipykernel>=6.29

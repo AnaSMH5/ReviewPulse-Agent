@@ -1,0 +1,327 @@
+==============================================================================
+CORRIDA #1 | 2026-10-18 23:57:53 | id 20261018_235629
+==============================================================================
+Tipo de corrida       : COMPLETA (5 semillas)
+Ejecución de evaluate : OK, duró 1 min 22 s | avisos simulados generados por el agente: 75
+Código                : commit 3d5aae9 "fix: fix store.py so replace does not get blocked by windows" (2026-10-18T22:31:37-05:00) | rama main
+Cambios sin commitear : ninguno
+thresholds.json sha256: 2eb55fb932e6 | fijado_el 2026-10-18 | último commit 95ca437 2026-10-18T19:26:02-05:00 | modificaciones sin commitear: no
+¿Cambiaron los umbrales desde la corrida anterior?: primera corrida registrada
+Parámetros del agente : WINDOW_WEEKS=26 | MIN_REVIEWS=8 | NEG_RISE=0.15 | ALERT_P_VALUE=0.1 | NEGATIVE_MAX_RATING=2 | TOPIC_REVIEW_THRESHOLD=0.3 | RANDOM_STATE=42
+Entorno simulado      : la fuente falla con p=0.2 y 10% de reseñas sin fecha
+Datos                 : reviews_eda 351a7ef5 | train def142f4 | test 824be1e9
+Modelo guardado       : válido como examen limpio - modelos entrenados solo con train.csv y sin cambios posteriores
+Semillas              : [0, 1, 2, 3, 4]
+
+---- TABLA DE RESULTADOS (resumen) -------------------------------------------
+  Medida  Umbral    Resultado obtenido    ¿Cumple?  Casos ejecutados
+  M1      >= 0.85   0.617 ± 0.019         NO        13 casos x 5 semillas
+  M1R     >= 0.85   0.860 ± 0.015         SÍ        13 casos x 5 semillas
+  M2      >= 0.8    0.518 ± 0.010         NO        13 casos x 5 semillas
+  M2R     >= 0.8    0.839 ± 0.012         SÍ        13 casos x 5 semillas
+  M1D     >= 0.85   0.667 ± 0.000         NO        90 reseñas de test.csv
+  M2D     >= 0.8    0.511 ± 0.000         NO        90 reseñas de test.csv
+  M3D     >= 0.8    0.670 ± 0.087         NO        20 escenarios x 5 semillas
+  M3F     < 0.15    0.000 ± 0.000         SÍ        10 escenarios x 5 semillas
+  M3RD    >= 0.8    0.471 ± 0.000         NO        17 semanas con alerta real
+  M3RF    < 0.15    0.000 ± 0.000         SÍ        57 semanas sin alerta real
+  R1      >= 1.0    0.955 ± 0.208         NO        22 ejecuciones de falla esperada
+  -> 4 de 11 medidas evaluables cumplen su umbral (0 no evaluables).
+
+---- FICHAS (las 7 columnas de la entrega) -----------------------------------
+[M1] Exactitud de polaridad (escala 1 a 5)
+  Fórmula           : aciertos / reseñas evaluadas, 300 reseñas con predicción fuera de muestra
+  Umbral            : >= 0.85 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 13 casos x 5 semillas
+  Resultado obtenido: 0.617 ± 0.019
+  ¿Cumple?          : NO (faltan 23.3 puntos para el umbral)
+  Evidencia         : logs/fase3_corridas/20261018_235629/m12_casos.csv
+
+[M1R] Exactitud de polaridad reformulada (negativa / neutra / positiva)
+  Fórmula           : aciertos / reseñas evaluadas tras agrupar 1-2, 3, 4-5
+  Umbral            : >= 0.85 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 13 casos x 5 semillas
+  Resultado obtenido: 0.860 ± 0.015
+  ¿Cumple?          : SÍ (margen +1.0 puntos sobre el umbral)
+  Evidencia         : logs/fase3_corridas/20261018_235629/m12_casos.csv
+
+[M2] Exactitud del tema principal (estricta)
+  Fórmula           : reseñas cuyo tema predicho = tema principal etiquetado / total
+  Umbral            : >= 0.8 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 13 casos x 5 semillas
+  Resultado obtenido: 0.518 ± 0.010
+  ¿Cumple?          : NO (faltan 28.2 puntos para el umbral)
+  Evidencia         : logs/fase3_corridas/20261018_235629/m12_casos.csv
+
+[M2R] Exactitud del tema principal (permisiva)
+  Fórmula           : reseñas cuyo tema predicho está entre los temas etiquetados de la reseña / total
+  Umbral            : >= 0.8 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 13 casos x 5 semillas
+  Resultado obtenido: 0.839 ± 0.012
+  ¿Cumple?          : SÍ (margen +3.9 puntos sobre el umbral)
+  Evidencia         : logs/fase3_corridas/20261018_235629/m12_casos.csv
+
+[M1D] Exactitud de polaridad (1 a 5) del modelo guardado en models/ sobre test.csv
+  Fórmula           : aciertos / 90 reseñas de test.csv, solo si models/ se entrenó únicamente con train.csv
+  Umbral            : >= 0.85 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 90 reseñas de test.csv
+  Resultado obtenido: 0.667 ± 0.000
+  ¿Cumple?          : NO (faltan 18.3 puntos para el umbral)
+  Evidencia         : logs/fase3_corridas/20261018_235629/m12_casos.csv, logs/fase3_corridas/20261018_235629/modelo_guardado.json
+
+[M2D] Exactitud del tema (estricta) del modelo guardado en models/ sobre test.csv
+  Fórmula           : tema predicho = tema principal / 90 reseñas de test.csv, solo si models/ se entrenó únicamente con train.csv
+  Umbral            : >= 0.8 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 90 reseñas de test.csv
+  Resultado obtenido: 0.511 ± 0.000
+  ¿Cumple?          : NO (faltan 28.9 puntos para el umbral)
+  Evidencia         : logs/fase3_corridas/20261018_235629/m12_casos.csv, logs/fase3_corridas/20261018_235629/modelo_guardado.json
+
+[M3D] Detección de incrementos significativos de negativas (escenarios controlados)
+  Fórmula           : escenarios con pico inyectado en los que el agente alertó / escenarios con pico inyectado
+  Umbral            : >= 0.8 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 20 escenarios x 5 semillas
+  Resultado obtenido: 0.670 ± 0.087
+  ¿Cumple?          : NO (faltan 13.0 puntos para el umbral)
+  Evidencia         : logs/fase3_corridas/20261018_235629/m3_casos.csv, logs/fase3/m3/s*_moderado_*, s*_grande_* (logs del agente; se sobrescriben en la siguiente corrida)
+
+[M3F] Falsos positivos (escenarios de control)
+  Fórmula           : escenarios sin pico en los que el agente alertó / escenarios sin pico
+  Umbral            : < 0.15 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 10 escenarios x 5 semillas
+  Resultado obtenido: 0.000 ± 0.000
+  ¿Cumple?          : SÍ (margen +15.0 puntos sobre el umbral)
+  Evidencia         : logs/fase3_corridas/20261018_235629/m3_casos.csv, logs/fase3/m3/s*_control_* (logs del agente; se sobrescriben en la siguiente corrida)
+
+[M3RD] Detección en prueba retrospectiva sobre el histórico
+  Fórmula           : semanas con alerta verdadera (calculada con los ratings reales) en que el agente alertó / semanas con alerta verdadera
+  Umbral            : >= 0.8 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 17 semanas con alerta real
+  Resultado obtenido: 0.471 ± 0.000
+  ¿Cumple?          : NO (faltan 32.9 puntos para el umbral)
+  Evidencia         : logs/fase3_corridas/20261018_235629/m3_retro_semanas.csv, logs/fase3/m3/retro/ (logs del agente; se sobrescriben en la siguiente corrida)
+
+[M3RF] Falsos positivos en prueba retrospectiva
+  Fórmula           : semanas sin alerta verdadera en que el agente alertó / semanas sin alerta verdadera evaluables
+  Umbral            : < 0.15 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 57 semanas sin alerta real
+  Resultado obtenido: 0.000 ± 0.000
+  ¿Cumple?          : SÍ (margen +15.0 puntos sobre el umbral)
+  Evidencia         : logs/fase3_corridas/20261018_235629/m3_retro_semanas.csv, logs/fase3/m3/retro/ (logs del agente; se sobrescriben en la siguiente corrida)
+
+[R1] Robustez ante condiciones excepcionales
+  Fórmula           : casos de falla esperada manejados correctamente (sin caerse ni inventar datos) / casos de falla esperada
+  Umbral            : >= 1.0 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 22 ejecuciones de falla esperada
+  Resultado obtenido: 0.955 ± 0.208
+  ¿Cumple?          : NO (faltan 4.5 puntos para el umbral)
+  Evidencia         : logs/fase3_corridas/20261018_235629/m3_casos.csv, logs/fase3_corridas/20261018_235629/m12_casos.csv
+
+---- DISEÑO DE LA PRUEBA (requisitos de la entrega) --------------------------
+  Repeticiones (semillas) : 5 -> mínimo 5: SÍ
+  Medidas 1 y 2           : 13 casos distintos (normales 3, límite 8, falla esperada 2) -> >=10: SÍ | >=2 de falla: SÍ
+  Medida 3 (escenarios)  : 34 escenarios distintos (control 10, pico 20, falla esperada 4) -> >=10: SÍ | >=2 de falla: SÍ
+  Medida 3 (retrospectiva): 266 semanas recorridas, 74 evaluables (con reseñas y con ventanas suficientes)
+
+---- DETALLE (exploratorio: no forma parte de thresholds.json) ---------------
+  Medidas 1 y 2 por caso (media ± desv. entre semillas):
+    C01_global_300                 normal          n=300  polaridad_1a5      0.617 ± 0.019
+    C01_global_300                 normal          n=300  polaridad_3clases  0.860 ± 0.015
+    C01_global_300                 normal          n=300  tema_estricta      0.518 ± 0.010
+    C01_global_300                 normal          n=300  tema_permisiva     0.839 ± 0.012
+    C03_rating_1                   límite          n=43   polaridad_1a5      0.842 ± 0.031
+    C04_rating_2                   límite          n=25   polaridad_1a5      0.064 ± 0.041
+    C05_rating_3                   límite          n=32   polaridad_1a5      0.306 ± 0.054
+    C06_rating_4                   límite          n=60   polaridad_1a5      0.267 ± 0.068
+    C07_rating_5                   límite          n=140  polaridad_1a5      0.867 ± 0.017
+    C08_texto_corto                límite          n=83   polaridad_1a5      0.735 ± 0.022
+    C09_texto_largo                límite          n=75   polaridad_1a5      0.552 ± 0.030
+    C10_temas_minoritarios         límite          n=47   tema_estricta      0.106 ± 0.019
+    C11_holdout_90                 normal          n=90   polaridad_1a5      0.667 ± 0.000
+    C11_holdout_90                 normal          n=90   tema_estricta      0.511 ± 0.000
+    C12_texto_vacio                falla_esperada  n=4    manejado_correcto  1.000 ± 0.000
+    C13_texto_ilegible             falla_esperada  n=4    manejado_correcto  0.250 ± 0.000
+    C14_modelo_guardado_test90     normal          n=90   polaridad_1a5      0.667 ± 0.000
+    C14_modelo_guardado_test90     normal          n=90   tema_estricta      0.511 ± 0.000
+  Medida 3, detección según la intensidad del pico inyectado:
+    grande     39/50 alertas = 0.780 (k inyectado: mediana 15, máx 282)
+    moderado   28/50 alertas = 0.560 (k inyectado: mediana 8, máx 141)
+  Medida 3, fallas esperadas mal manejadas: 0
+  Medidas 1 y 2, fallas esperadas mal manejadas: 1 -> C13_texto_ilegible (0.25)
+  Retrospectiva (semanas): alerta real y agente alerta = 8 | alerta real y agente NO = 9 | falsa alarma = 0 | ambos sin alerta = 57
+  Retrospectiva (episodios, exploratorio): 6 episodios con alerta real; el agente alertó al menos una vez en 4 (0.67)
+  Semanas con alerta real que el agente no detectó: 2021-01-25, 2021-12-06, 2021-12-27, 2022-01-03, 2022-01-10, 2022-01-17, 2022-01-24, 2022-02-14, 2022-03-14
+
+---- NOTAS DE LECTURA --------------------------------------------------------
+  - Desv. = desviación estándar poblacional entre semillas (ddof=0), como la calcula evaluate.py.
+  - M1/M2/M1R/M2R usan predicciones fuera de muestra (validación cruzada) sobre las 300 reseñas; la etiqueta
+    de polaridad es el rating de la reseña y la de tema es la de reviews_eda.csv, no un etiquetado manual aparte.
+  - La 'verdad' de M3RD/M3RF es la misma regla de alerta aplicada a los ratings reales: mide cuánto la degrada
+    el clasificador, no eventos reales identificados por personas. M3D/M3F usan picos inyectados (simulación).
+  - Evidencia de esta corrida: logs/fase3_corridas/20261018_235629/ (logs/fase3/ se sobrescribe en cada corrida).
+  - Capturas / minuto del video: (agregar a mano en el documento de entrega)
+
+
+==============================================================================
+CORRIDA #2 | 2026-10-19 00:39:31 | id 20261019_003801
+==============================================================================
+Tipo de corrida       : COMPLETA (5 semillas)
+Ejecución de evaluate : OK, duró 1 min 28 s | avisos simulados generados por el agente: 75
+Código                : commit 3d5aae9 "fix: fix store.py so replace does not get blocked by windows" (2026-10-18T22:31:37-05:00) | rama main
+Cambios sin commitear : data/feedback/   <- el resultado puede no corresponder al commit
+thresholds.json sha256: 2eb55fb932e6 | fijado_el 2026-10-18 | último commit 95ca437 2026-10-18T19:26:02-05:00 | modificaciones sin commitear: no
+¿Cambiaron los umbrales desde la corrida anterior?: no
+Parámetros del agente : WINDOW_WEEKS=26 | MIN_REVIEWS=8 | NEG_RISE=0.15 | ALERT_P_VALUE=0.1 | NEGATIVE_MAX_RATING=2 | TOPIC_REVIEW_THRESHOLD=0.3 | RANDOM_STATE=42
+Entorno simulado      : la fuente falla con p=0.2 y 10% de reseñas sin fecha
+Datos                 : reviews_eda 351a7ef5 | train def142f4 | test 824be1e9
+Modelo guardado       : válido como examen limpio - modelos entrenados solo con train.csv y sin cambios posteriores
+Semillas              : [0, 1, 2, 3, 4]
+
+---- TABLA DE RESULTADOS (resumen) -------------------------------------------
+  Medida  Umbral    Resultado obtenido    ¿Cumple?  Casos ejecutados
+  M1      >= 0.85   0.617 ± 0.019         NO        13 casos x 5 semillas
+  M1R     >= 0.85   0.860 ± 0.015         SÍ        13 casos x 5 semillas
+  M2      >= 0.8    0.518 ± 0.010         NO        13 casos x 5 semillas
+  M2R     >= 0.8    0.839 ± 0.012         SÍ        13 casos x 5 semillas
+  M1D     >= 0.85   0.667 ± 0.000         NO        90 reseñas de test.csv
+  M2D     >= 0.8    0.511 ± 0.000         NO        90 reseñas de test.csv
+  M3D     >= 0.8    0.670 ± 0.087         NO        20 escenarios x 5 semillas
+  M3F     < 0.15    0.000 ± 0.000         SÍ        10 escenarios x 5 semillas
+  M3RD    >= 0.8    0.471 ± 0.000         NO        17 semanas con alerta real
+  M3RF    < 0.15    0.000 ± 0.000         SÍ        57 semanas sin alerta real
+  R1      >= 1.0    0.955 ± 0.208         NO        22 ejecuciones de falla esperada
+  -> 4 de 11 medidas evaluables cumplen su umbral (0 no evaluables).
+
+---- FICHAS (las 7 columnas de la entrega) -----------------------------------
+[M1] Exactitud de polaridad (escala 1 a 5)
+  Fórmula           : aciertos / reseñas evaluadas, 300 reseñas con predicción fuera de muestra
+  Umbral            : >= 0.85 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 13 casos x 5 semillas
+  Resultado obtenido: 0.617 ± 0.019
+  ¿Cumple?          : NO (faltan 23.3 puntos para el umbral)
+  Evidencia         : logs/fase3_corridas/20261019_003801/m12_casos.csv
+
+[M1R] Exactitud de polaridad reformulada (negativa / neutra / positiva)
+  Fórmula           : aciertos / reseñas evaluadas tras agrupar 1-2, 3, 4-5
+  Umbral            : >= 0.85 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 13 casos x 5 semillas
+  Resultado obtenido: 0.860 ± 0.015
+  ¿Cumple?          : SÍ (margen +1.0 puntos sobre el umbral)
+  Evidencia         : logs/fase3_corridas/20261019_003801/m12_casos.csv
+
+[M2] Exactitud del tema principal (estricta)
+  Fórmula           : reseñas cuyo tema predicho = tema principal etiquetado / total
+  Umbral            : >= 0.8 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 13 casos x 5 semillas
+  Resultado obtenido: 0.518 ± 0.010
+  ¿Cumple?          : NO (faltan 28.2 puntos para el umbral)
+  Evidencia         : logs/fase3_corridas/20261019_003801/m12_casos.csv
+
+[M2R] Exactitud del tema principal (permisiva)
+  Fórmula           : reseñas cuyo tema predicho está entre los temas etiquetados de la reseña / total
+  Umbral            : >= 0.8 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 13 casos x 5 semillas
+  Resultado obtenido: 0.839 ± 0.012
+  ¿Cumple?          : SÍ (margen +3.9 puntos sobre el umbral)
+  Evidencia         : logs/fase3_corridas/20261019_003801/m12_casos.csv
+
+[M1D] Exactitud de polaridad (1 a 5) del modelo guardado en models/ sobre test.csv
+  Fórmula           : aciertos / 90 reseñas de test.csv, solo si models/ se entrenó únicamente con train.csv
+  Umbral            : >= 0.85 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 90 reseñas de test.csv
+  Resultado obtenido: 0.667 ± 0.000
+  ¿Cumple?          : NO (faltan 18.3 puntos para el umbral)
+  Evidencia         : logs/fase3_corridas/20261019_003801/m12_casos.csv, logs/fase3_corridas/20261019_003801/modelo_guardado.json
+
+[M2D] Exactitud del tema (estricta) del modelo guardado en models/ sobre test.csv
+  Fórmula           : tema predicho = tema principal / 90 reseñas de test.csv, solo si models/ se entrenó únicamente con train.csv
+  Umbral            : >= 0.8 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 90 reseñas de test.csv
+  Resultado obtenido: 0.511 ± 0.000
+  ¿Cumple?          : NO (faltan 28.9 puntos para el umbral)
+  Evidencia         : logs/fase3_corridas/20261019_003801/m12_casos.csv, logs/fase3_corridas/20261019_003801/modelo_guardado.json
+
+[M3D] Detección de incrementos significativos de negativas (escenarios controlados)
+  Fórmula           : escenarios con pico inyectado en los que el agente alertó / escenarios con pico inyectado
+  Umbral            : >= 0.8 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 20 escenarios x 5 semillas
+  Resultado obtenido: 0.670 ± 0.087
+  ¿Cumple?          : NO (faltan 13.0 puntos para el umbral)
+  Evidencia         : logs/fase3_corridas/20261019_003801/m3_casos.csv, logs/fase3/m3/s*_moderado_*, s*_grande_* (logs del agente; se sobrescriben en la siguiente corrida)
+
+[M3F] Falsos positivos (escenarios de control)
+  Fórmula           : escenarios sin pico en los que el agente alertó / escenarios sin pico
+  Umbral            : < 0.15 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 10 escenarios x 5 semillas
+  Resultado obtenido: 0.000 ± 0.000
+  ¿Cumple?          : SÍ (margen +15.0 puntos sobre el umbral)
+  Evidencia         : logs/fase3_corridas/20261019_003801/m3_casos.csv, logs/fase3/m3/s*_control_* (logs del agente; se sobrescriben en la siguiente corrida)
+
+[M3RD] Detección en prueba retrospectiva sobre el histórico
+  Fórmula           : semanas con alerta verdadera (calculada con los ratings reales) en que el agente alertó / semanas con alerta verdadera
+  Umbral            : >= 0.8 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 17 semanas con alerta real
+  Resultado obtenido: 0.471 ± 0.000
+  ¿Cumple?          : NO (faltan 32.9 puntos para el umbral)
+  Evidencia         : logs/fase3_corridas/20261019_003801/m3_retro_semanas.csv, logs/fase3/m3/retro/ (logs del agente; se sobrescriben en la siguiente corrida)
+
+[M3RF] Falsos positivos en prueba retrospectiva
+  Fórmula           : semanas sin alerta verdadera en que el agente alertó / semanas sin alerta verdadera evaluables
+  Umbral            : < 0.15 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 57 semanas sin alerta real
+  Resultado obtenido: 0.000 ± 0.000
+  ¿Cumple?          : SÍ (margen +15.0 puntos sobre el umbral)
+  Evidencia         : logs/fase3_corridas/20261019_003801/m3_retro_semanas.csv, logs/fase3/m3/retro/ (logs del agente; se sobrescriben en la siguiente corrida)
+
+[R1] Robustez ante condiciones excepcionales
+  Fórmula           : casos de falla esperada manejados correctamente (sin caerse ni inventar datos) / casos de falla esperada
+  Umbral            : >= 1.0 (fijado en thresholds.json antes de ejecutar)
+  Casos ejecutados  : 22 ejecuciones de falla esperada
+  Resultado obtenido: 0.955 ± 0.208
+  ¿Cumple?          : NO (faltan 4.5 puntos para el umbral)
+  Evidencia         : logs/fase3_corridas/20261019_003801/m3_casos.csv, logs/fase3_corridas/20261019_003801/m12_casos.csv
+
+---- DISEÑO DE LA PRUEBA (requisitos de la entrega) --------------------------
+  Repeticiones (semillas) : 5 -> mínimo 5: SÍ
+  Medidas 1 y 2           : 13 casos distintos (normales 3, límite 8, falla esperada 2) -> >=10: SÍ | >=2 de falla: SÍ
+  Medida 3 (escenarios)  : 34 escenarios distintos (control 10, pico 20, falla esperada 4) -> >=10: SÍ | >=2 de falla: SÍ
+  Medida 3 (retrospectiva): 266 semanas recorridas, 74 evaluables (con reseñas y con ventanas suficientes)
+
+---- DETALLE (exploratorio: no forma parte de thresholds.json) ---------------
+  Medidas 1 y 2 por caso (media ± desv. entre semillas):
+    C01_global_300                 normal          n=300  polaridad_1a5      0.617 ± 0.019
+    C01_global_300                 normal          n=300  polaridad_3clases  0.860 ± 0.015
+    C01_global_300                 normal          n=300  tema_estricta      0.518 ± 0.010
+    C01_global_300                 normal          n=300  tema_permisiva     0.839 ± 0.012
+    C03_rating_1                   límite          n=43   polaridad_1a5      0.842 ± 0.031
+    C04_rating_2                   límite          n=25   polaridad_1a5      0.064 ± 0.041
+    C05_rating_3                   límite          n=32   polaridad_1a5      0.306 ± 0.054
+    C06_rating_4                   límite          n=60   polaridad_1a5      0.267 ± 0.068
+    C07_rating_5                   límite          n=140  polaridad_1a5      0.867 ± 0.017
+    C08_texto_corto                límite          n=83   polaridad_1a5      0.735 ± 0.022
+    C09_texto_largo                límite          n=75   polaridad_1a5      0.552 ± 0.030
+    C10_temas_minoritarios         límite          n=47   tema_estricta      0.106 ± 0.019
+    C11_holdout_90                 normal          n=90   polaridad_1a5      0.667 ± 0.000
+    C11_holdout_90                 normal          n=90   tema_estricta      0.511 ± 0.000
+    C12_texto_vacio                falla_esperada  n=4    manejado_correcto  1.000 ± 0.000
+    C13_texto_ilegible             falla_esperada  n=4    manejado_correcto  0.250 ± 0.000
+    C14_modelo_guardado_test90     normal          n=90   polaridad_1a5      0.667 ± 0.000
+    C14_modelo_guardado_test90     normal          n=90   tema_estricta      0.511 ± 0.000
+  Medida 3, detección según la intensidad del pico inyectado:
+    grande     39/50 alertas = 0.780 (k inyectado: mediana 15, máx 282)
+    moderado   28/50 alertas = 0.560 (k inyectado: mediana 8, máx 141)
+  Medida 3, fallas esperadas mal manejadas: 0
+  Medidas 1 y 2, fallas esperadas mal manejadas: 1 -> C13_texto_ilegible (0.25)
+  Retrospectiva (semanas): alerta real y agente alerta = 8 | alerta real y agente NO = 9 | falsa alarma = 0 | ambos sin alerta = 57
+  Retrospectiva (episodios, exploratorio): 6 episodios con alerta real; el agente alertó al menos una vez en 4 (0.67)
+  Semanas con alerta real que el agente no detectó: 2021-01-25, 2021-12-06, 2021-12-27, 2022-01-03, 2022-01-10, 2022-01-17, 2022-01-24, 2022-02-14, 2022-03-14
+
+---- NOTAS DE LECTURA --------------------------------------------------------
+  - Desv. = desviación estándar poblacional entre semillas (ddof=0), como la calcula evaluate.py.
+  - M1/M2/M1R/M2R usan predicciones fuera de muestra (validación cruzada) sobre las 300 reseñas; la etiqueta
+    de polaridad es el rating de la reseña y la de tema es la de reviews_eda.csv, no un etiquetado manual aparte.
+  - La 'verdad' de M3RD/M3RF es la misma regla de alerta aplicada a los ratings reales: mide cuánto la degrada
+    el clasificador, no eventos reales identificados por personas. M3D/M3F usan picos inyectados (simulación).
+  - Evidencia de esta corrida: logs/fase3_corridas/20261019_003801/ (logs/fase3/ se sobrescribe en cada corrida).
+  - Capturas / minuto del video: (agregar a mano en el documento de entrega)
+

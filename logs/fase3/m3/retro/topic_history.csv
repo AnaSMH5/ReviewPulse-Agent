@@ -49,7 +49,7 @@ week,topic,n,negativas,pct_negativas,rating_medio,prev_n,prev_negativas
 2021-03-29,Comida y bebidas,5,3,0.6,2.6,0,0
 2021-03-29,Mantenimiento e instalaciones,2,2,1.0,1.5,0,0
 2021-03-29,Atención y personal,25,1,0.04,4.68,0,0
-2021-04-05,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.333333333333333,0,0
+2021-04-05,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.3333333333333335,0,0
 2021-04-05,Check-in / Check-out y reservas,2,0,0.0,4.5,0,0
 2021-04-05,Atención y personal,25,2,0.08,4.52,1,0
 2021-04-05,Habitaciones,4,0,0.0,4.25,1,0
@@ -58,67 +58,67 @@ week,topic,n,negativas,pct_negativas,rating_medio,prev_n,prev_negativas
 2021-04-12,Habitaciones,6,1,0.1666666666666666,3.8333333333333335,1,0
 2021-04-12,Atención y personal,25,2,0.08,4.56,2,0
 2021-04-12,Comida y bebidas,5,3,0.6,2.6,0,0
-2021-04-12,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.333333333333333,0,0
+2021-04-12,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.3333333333333335,0,0
 2021-04-19,Comida y bebidas,5,3,0.6,2.6,0,0
 2021-04-19,Habitaciones,6,1,0.1666666666666666,3.8333333333333335,1,0
 2021-04-19,Atención y personal,26,3,0.1153846153846153,4.461538461538462,2,0
-2021-04-19,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.333333333333333,0,0
+2021-04-19,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.3333333333333335,0,0
 2021-04-19,Check-in / Check-out y reservas,1,0,0.0,4.0,1,0
 2021-04-26,Atención y personal,25,3,0.12,4.44,3,0
 2021-04-26,Comida y bebidas,5,3,0.6,2.6,0,0
 2021-04-26,Check-in / Check-out y reservas,1,0,0.0,4.0,1,0
-2021-04-26,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.333333333333333,0,0
+2021-04-26,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.3333333333333335,0,0
 2021-04-26,Habitaciones,6,1,0.1666666666666666,3.8333333333333335,1,0
 2021-05-03,"Piscina, playa y entretenimiento",1,0,0.0,5.0,0,0
 2021-05-03,Atención y personal,26,3,0.1153846153846153,4.461538461538462,3,0
 2021-05-03,Habitaciones,6,1,0.1666666666666666,3.8333333333333335,1,0
-2021-05-03,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.333333333333333,0,0
+2021-05-03,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.3333333333333335,0,0
 2021-05-03,Check-in / Check-out y reservas,1,0,0.0,4.0,1,0
 2021-05-03,Comida y bebidas,5,3,0.6,2.6,0,0
 2021-05-10,Check-in / Check-out y reservas,1,0,0.0,4.0,1,0
 2021-05-10,Comida y bebidas,5,3,0.6,2.6,0,0
 2021-05-10,Atención y personal,28,3,0.1071428571428571,4.535714285714286,4,0
 2021-05-10,Habitaciones,6,1,0.1666666666666666,3.8333333333333335,1,0
-2021-05-10,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.333333333333333,0,0
+2021-05-10,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.3333333333333335,0,0
 2021-05-10,"Piscina, playa y entretenimiento",1,0,0.0,5.0,0,0
 2021-05-17,Habitaciones,5,1,0.2,3.6,2,0
 2021-05-17,"Piscina, playa y entretenimiento",1,0,0.0,5.0,0,0
 2021-05-17,Atención y personal,28,3,0.1071428571428571,4.535714285714286,4,0
-2021-05-17,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.333333333333333,0,0
+2021-05-17,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.3333333333333335,0,0
 2021-05-17,Check-in / Check-out y reservas,1,0,0.0,4.0,1,0
 2021-05-17,Comida y bebidas,5,3,0.6,2.6,0,0
 2021-05-24,Atención y personal,26,3,0.1153846153846153,4.5,6,0
 2021-05-24,"Piscina, playa y entretenimiento",1,0,0.0,5.0,0,0
 2021-05-24,Habitaciones,5,1,0.2,3.6,2,0
-2021-05-24,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.333333333333333,0,0
+2021-05-24,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.3333333333333335,0,0
 2021-05-24,Comida y bebidas,5,3,0.6,2.6,0,0
 2021-05-24,Check-in / Check-out y reservas,1,0,0.0,4.0,1,0
 2021-05-31,Comida y bebidas,5,3,0.6,2.6,0,0
 2021-05-31,"Piscina, playa y entretenimiento",1,0,0.0,5.0,0,0
 2021-05-31,Check-in / Check-out y reservas,1,0,0.0,4.0,1,0
 2021-05-31,Habitaciones,6,1,0.1666666666666666,3.8333333333333335,2,0
-2021-05-31,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.333333333333333,0,0
+2021-05-31,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.3333333333333335,0,0
 2021-05-31,Atención y personal,26,3,0.1153846153846153,4.5,6,0
 2021-06-07,Habitaciones,6,1,0.1666666666666666,3.8333333333333335,2,0
 2021-06-07,Check-in / Check-out y reservas,1,0,0.0,4.0,1,0
-2021-06-07,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.333333333333333,0,0
+2021-06-07,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.3333333333333335,0,0
 2021-06-07,Comida y bebidas,4,2,0.5,3.0,1,1
 2021-06-07,Atención y personal,27,3,0.1111111111111111,4.518518518518518,6,0
 2021-06-07,"Piscina, playa y entretenimiento",1,0,0.0,5.0,0,0
 2021-06-14,Comida y bebidas,4,2,0.5,3.0,1,1
-2021-06-14,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.333333333333333,0,0
+2021-06-14,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.3333333333333335,0,0
 2021-06-14,"Piscina, playa y entretenimiento",1,0,0.0,5.0,0,0
 2021-06-14,Habitaciones,6,1,0.1666666666666666,3.8333333333333335,2,0
 2021-06-14,Atención y personal,27,3,0.1111111111111111,4.518518518518518,6,0
 2021-06-14,Check-in / Check-out y reservas,1,0,0.0,4.0,1,0
 2021-06-21,"Piscina, playa y entretenimiento",1,0,0.0,5.0,0,0
-2021-06-21,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.333333333333333,0,0
+2021-06-21,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.3333333333333335,0,0
 2021-06-21,Comida y bebidas,4,2,0.5,3.0,1,1
 2021-06-21,Habitaciones,6,1,0.1666666666666666,3.8333333333333335,2,0
 2021-06-21,Atención y personal,26,3,0.1153846153846153,4.5,7,0
 2021-06-21,Check-in / Check-out y reservas,1,0,0.0,4.0,1,0
 2021-06-28,Check-in / Check-out y reservas,1,0,0.0,4.0,1,0
-2021-06-28,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.333333333333333,0,0
+2021-06-28,Mantenimiento e instalaciones,3,2,0.6666666666666666,2.3333333333333335,0,0
 2021-06-28,"Piscina, playa y entretenimiento",1,0,0.0,5.0,0,0
 2021-06-28,Comida y bebidas,4,2,0.5,3.0,1,1
 2021-06-28,Atención y personal,29,4,0.1379310344827586,4.413793103448276,7,0
@@ -151,7 +151,7 @@ week,topic,n,negativas,pct_negativas,rating_medio,prev_n,prev_negativas
 2021-08-02,"Piscina, playa y entretenimiento",1,0,0.0,5.0,0,0
 2021-08-09,"Piscina, playa y entretenimiento",1,0,0.0,5.0,0,0
 2021-08-09,Mantenimiento e instalaciones,2,1,0.5,2.5,2,2
-2021-08-09,Comida y bebidas,3,1,0.3333333333333333,3.333333333333333,2,2
+2021-08-09,Comida y bebidas,3,1,0.3333333333333333,3.3333333333333335,2,2
 2021-08-09,Habitaciones,4,1,0.25,4.0,3,0
 2021-08-09,Atención y personal,26,5,0.1923076923076923,4.115384615384615,16,0
 2021-08-16,Habitaciones,4,1,0.25,4.0,3,0
@@ -219,15 +219,15 @@ week,topic,n,negativas,pct_negativas,rating_medio,prev_n,prev_negativas
 2021-11-29,Comida y bebidas,1,0,0.0,4.0,5,3
 2021-11-29,Atención y personal,18,4,0.2222222222222222,3.888888888888889,26,3
 2021-12-06,Atención y personal,17,4,0.2352941176470588,3.823529411764706,27,3
-2021-12-06,Habitaciones,3,1,0.3333333333333333,3.333333333333333,6,1
+2021-12-06,Habitaciones,3,1,0.3333333333333333,3.3333333333333335,6,1
 2021-12-06,Comida y bebidas,1,0,0.0,4.0,4,2
 2021-12-06,Mantenimiento e instalaciones,4,2,0.5,2.25,3,2
 2021-12-13,Mantenimiento e instalaciones,4,2,0.5,2.25,3,2
-2021-12-13,Habitaciones,3,1,0.3333333333333333,3.333333333333333,6,1
+2021-12-13,Habitaciones,3,1,0.3333333333333333,3.3333333333333335,6,1
 2021-12-13,Comida y bebidas,1,0,0.0,4.0,4,2
 2021-12-13,Atención y personal,17,4,0.2352941176470588,3.823529411764706,27,3
 2021-12-20,Atención y personal,17,4,0.2352941176470588,3.823529411764706,26,3
-2021-12-20,Habitaciones,3,1,0.3333333333333333,3.333333333333333,6,1
+2021-12-20,Habitaciones,3,1,0.3333333333333333,3.3333333333333335,6,1
 2021-12-20,Comida y bebidas,1,0,0.0,4.0,4,2
 2021-12-20,Mantenimiento e instalaciones,4,2,0.5,2.25,3,2
 2021-12-27,Habitaciones,4,2,0.5,2.75,6,1
@@ -278,29 +278,29 @@ week,topic,n,negativas,pct_negativas,rating_medio,prev_n,prev_negativas
 2022-03-14,Atención y personal,12,5,0.4166666666666667,3.25,20,4
 2022-03-14,Comida y bebidas,3,0,0.0,4.333333333333333,0,0
 2022-03-14,Habitaciones,8,5,0.625,2.125,3,1
-2022-03-21,Mantenimiento e instalaciones,3,1,0.3333333333333333,2.333333333333333,3,1
+2022-03-21,Mantenimiento e instalaciones,3,1,0.3333333333333333,2.3333333333333335,3,1
 2022-03-21,Comida y bebidas,3,0,0.0,4.333333333333333,0,0
 2022-03-21,Atención y personal,10,5,0.5,3.0,22,4
 2022-03-21,Habitaciones,8,5,0.625,2.125,3,1
-2022-03-28,Mantenimiento e instalaciones,3,1,0.3333333333333333,2.333333333333333,3,1
+2022-03-28,Mantenimiento e instalaciones,3,1,0.3333333333333333,2.3333333333333335,3,1
 2022-03-28,Atención y personal,10,5,0.5,3.0,19,4
 2022-03-28,Habitaciones,9,6,0.6666666666666666,2.0,3,1
 2022-03-28,Comida y bebidas,3,0,0.0,4.333333333333333,0,0
 2022-04-04,Atención y personal,10,5,0.5,3.0,18,3
 2022-04-04,Comida y bebidas,3,0,0.0,4.333333333333333,0,0
-2022-04-04,Mantenimiento e instalaciones,3,1,0.3333333333333333,2.333333333333333,2,1
+2022-04-04,Mantenimiento e instalaciones,3,1,0.3333333333333333,2.3333333333333335,2,1
 2022-04-04,Habitaciones,9,6,0.6666666666666666,2.0,3,1
 2022-04-11,Comida y bebidas,3,0,0.0,4.333333333333333,0,0
 2022-04-11,Atención y personal,10,5,0.5,3.0,17,3
 2022-04-11,Habitaciones,9,6,0.6666666666666666,2.0,1,0
-2022-04-11,Mantenimiento e instalaciones,3,1,0.3333333333333333,2.333333333333333,2,1
+2022-04-11,Mantenimiento e instalaciones,3,1,0.3333333333333333,2.3333333333333335,2,1
 2022-04-18,Habitaciones,10,7,0.7,1.9,1,0
-2022-04-18,Mantenimiento e instalaciones,3,1,0.3333333333333333,2.333333333333333,2,1
+2022-04-18,Mantenimiento e instalaciones,3,1,0.3333333333333333,2.3333333333333335,2,1
 2022-04-18,Comida y bebidas,3,0,0.0,4.333333333333333,0,0
 2022-04-18,Atención y personal,10,5,0.5,3.0,16,2
 2022-04-25,Habitaciones,10,7,0.7,1.9,1,0
 2022-04-25,Atención y personal,8,5,0.625,2.5,18,2
-2022-04-25,Mantenimiento e instalaciones,3,1,0.3333333333333333,2.333333333333333,2,1
+2022-04-25,Mantenimiento e instalaciones,3,1,0.3333333333333333,2.3333333333333335,2,1
 2022-04-25,Comida y bebidas,3,0,0.0,4.333333333333333,0,0
 2022-05-02,Comida y bebidas,3,0,0.0,4.333333333333333,0,0
 2022-05-02,Habitaciones,10,7,0.7,1.9,1,0
@@ -311,7 +311,7 @@ week,topic,n,negativas,pct_negativas,rating_medio,prev_n,prev_negativas
 2022-05-09,Comida y bebidas,3,0,0.0,4.333333333333333,0,0
 2022-05-09,Mantenimiento e instalaciones,2,0,0.0,3.0,3,2
 2022-05-16,Habitaciones,10,7,0.7,1.9,1,0
-2022-05-16,Atención y personal,6,4,0.6666666666666666,2.333333333333333,16,3
+2022-05-16,Atención y personal,6,4,0.6666666666666666,2.3333333333333335,16,3
 2022-05-16,Mantenimiento e instalaciones,2,0,0.0,3.0,3,2
 2022-05-16,Comida y bebidas,3,0,0.0,4.333333333333333,0,0
 2022-05-23,Mantenimiento e instalaciones,2,0,0.0,3.0,3,2
@@ -379,12 +379,12 @@ week,topic,n,negativas,pct_negativas,rating_medio,prev_n,prev_negativas
 2022-09-26,Comida y bebidas,1,0,0.0,4.0,3,0
 2022-09-26,Atención y personal,1,0,0.0,5.0,10,5
 2022-09-26,Check-in / Check-out y reservas,1,1,1.0,1.0,0,0
-2022-09-26,Habitaciones,3,1,0.3333333333333333,3.333333333333333,9,6
-2022-10-03,Habitaciones,3,1,0.3333333333333333,3.333333333333333,9,6
+2022-09-26,Habitaciones,3,1,0.3333333333333333,3.3333333333333335,9,6
+2022-10-03,Habitaciones,3,1,0.3333333333333333,3.3333333333333335,9,6
 2022-10-03,Atención y personal,1,0,0.0,5.0,10,5
 2022-10-03,Comida y bebidas,1,0,0.0,4.0,3,0
 2022-10-03,Check-in / Check-out y reservas,1,1,1.0,1.0,0,0
-2022-10-10,Habitaciones,3,1,0.3333333333333333,3.333333333333333,9,6
+2022-10-10,Habitaciones,3,1,0.3333333333333333,3.3333333333333335,9,6
 2022-10-10,Comida y bebidas,1,0,0.0,4.0,3,0
 2022-10-10,Check-in / Check-out y reservas,1,1,1.0,1.0,0,0
 2022-10-10,Atención y personal,1,0,0.0,5.0,10,5
@@ -400,7 +400,7 @@ week,topic,n,negativas,pct_negativas,rating_medio,prev_n,prev_negativas
 2022-10-31,Check-in / Check-out y reservas,1,1,1.0,1.0,0,0
 2022-10-31,Comida y bebidas,1,0,0.0,4.0,3,0
 2022-10-31,Atención y personal,2,1,0.5,3.0,7,5
-2022-11-07,Habitaciones,3,1,0.3333333333333333,3.333333333333333,10,7
+2022-11-07,Habitaciones,3,1,0.3333333333333333,3.3333333333333335,10,7
 2022-11-07,Check-in / Check-out y reservas,1,1,1.0,1.0,0,0
 2022-11-07,Comida y bebidas,1,0,0.0,4.0,3,0
 2022-11-07,Atención y personal,2,1,0.5,3.0,7,5
@@ -422,7 +422,7 @@ week,topic,n,negativas,pct_negativas,rating_medio,prev_n,prev_negativas
 2022-12-12,Check-in / Check-out y reservas,1,1,1.0,1.0,0,0
 2022-12-12,Habitaciones,5,1,0.2,3.6,7,6
 2022-12-12,Atención y personal,9,1,0.1111111111111111,4.555555555555555,4,3
-2022-12-19,Atención y personal,19,1,0.0526315789473684,4.789473684210527,4,3
+2022-12-19,Atención y personal,19,1,0.0526315789473684,4.7894736842105265,4,3
 2022-12-19,Habitaciones,6,1,0.1666666666666666,3.8333333333333335,7,6
 2022-12-19,Comida y bebidas,3,0,0.0,5.0,3,0
 2022-12-19,Check-in / Check-out y reservas,1,1,1.0,1.0,0,0
@@ -432,16 +432,16 @@ week,topic,n,negativas,pct_negativas,rating_medio,prev_n,prev_negativas
 2022-12-26,Comida y bebidas,4,0,0.0,5.0,2,0
 2022-12-26,Mantenimiento e instalaciones,1,1,1.0,2.0,1,0
 2023-01-02,Atención y personal,25,1,0.04,4.8,4,2
-2023-01-02,Habitaciones,7,2,0.2857142857142857,3.571428571428572,7,5
+2023-01-02,Habitaciones,7,2,0.2857142857142857,3.5714285714285716,7,5
 2023-01-02,Mantenimiento e instalaciones,1,1,1.0,2.0,0,0
 2023-01-02,Check-in / Check-out y reservas,1,1,1.0,1.0,0,0
 2023-01-02,Comida y bebidas,6,0,0.0,5.0,2,0
-2023-01-09,Habitaciones,7,2,0.2857142857142857,3.571428571428572,5,4
+2023-01-09,Habitaciones,7,2,0.2857142857142857,3.5714285714285716,5,4
 2023-01-09,Check-in / Check-out y reservas,1,1,1.0,1.0,0,0
 2023-01-09,Comida y bebidas,6,0,0.0,5.0,1,0
 2023-01-09,Atención y personal,28,1,0.0357142857142857,4.821428571428571,4,2
 2023-01-09,Mantenimiento e instalaciones,1,1,1.0,2.0,0,0
-2023-01-16,Habitaciones,7,2,0.2857142857142857,3.571428571428572,4,3
+2023-01-16,Habitaciones,7,2,0.2857142857142857,3.5714285714285716,4,3
 2023-01-16,Mantenimiento e instalaciones,1,1,1.0,2.0,0,0
 2023-01-16,Atención y personal,29,1,0.0344827586206896,4.827586206896552,4,2
 2023-01-16,Check-in / Check-out y reservas,1,1,1.0,1.0,0,0
@@ -450,19 +450,19 @@ week,topic,n,negativas,pct_negativas,rating_medio,prev_n,prev_negativas
 2023-01-23,Mantenimiento e instalaciones,1,1,1.0,2.0,0,0
 2023-01-23,Check-in / Check-out y reservas,1,1,1.0,1.0,0,0
 2023-01-23,Atención y personal,29,1,0.0344827586206896,4.827586206896552,2,1
-2023-01-23,Habitaciones,7,2,0.2857142857142857,3.571428571428572,4,3
+2023-01-23,Habitaciones,7,2,0.2857142857142857,3.5714285714285716,4,3
 2023-01-30,Check-in / Check-out y reservas,1,1,1.0,1.0,0,0
 2023-01-30,Atención y personal,29,1,0.0344827586206896,4.827586206896552,2,1
 2023-01-30,Mantenimiento e instalaciones,1,1,1.0,2.0,0,0
 2023-01-30,Comida y bebidas,6,0,0.0,5.0,1,0
-2023-01-30,Habitaciones,7,2,0.2857142857142857,3.571428571428572,4,3
+2023-01-30,Habitaciones,7,2,0.2857142857142857,3.5714285714285716,4,3
 2023-02-06,Mantenimiento e instalaciones,1,1,1.0,2.0,0,0
-2023-02-06,Habitaciones,7,2,0.2857142857142857,3.571428571428572,4,3
+2023-02-06,Habitaciones,7,2,0.2857142857142857,3.5714285714285716,4,3
 2023-02-06,Check-in / Check-out y reservas,1,1,1.0,1.0,0,0
 2023-02-06,Comida y bebidas,6,0,0.0,5.0,1,0
 2023-02-06,Atención y personal,29,1,0.0344827586206896,4.827586206896552,2,1
 2023-02-13,Atención y personal,29,1,0.0344827586206896,4.827586206896552,1,0
-2023-02-13,Habitaciones,7,2,0.2857142857142857,3.571428571428572,4,3
+2023-02-13,Habitaciones,7,2,0.2857142857142857,3.5714285714285716,4,3
 2023-02-13,Mantenimiento e instalaciones,1,1,1.0,2.0,0,0
 2023-02-13,Check-in / Check-out y reservas,1,1,1.0,1.0,0,0
 2023-02-13,Comida y bebidas,6,0,0.0,5.0,1,0
@@ -538,7 +538,7 @@ week,topic,n,negativas,pct_negativas,rating_medio,prev_n,prev_negativas
 2023-06-12,Comida y bebidas,6,0,0.0,5.0,1,0
 2023-06-12,Mantenimiento e instalaciones,2,2,1.0,1.5,0,0
 2023-06-19,Comida y bebidas,4,0,0.0,5.0,3,0
-2023-06-19,Habitaciones,6,3,0.5,2.333333333333333,6,1
+2023-06-19,Habitaciones,6,3,0.5,2.3333333333333335,6,1
 2023-06-19,Atención y personal,14,0,0.0,4.928571428571429,19,1
 2023-06-19,Mantenimiento e instalaciones,2,2,1.0,1.5,0,0
 2023-06-26,Habitaciones,5,3,0.6,1.8,7,1
@@ -580,7 +580,7 @@ week,topic,n,negativas,pct_negativas,rating_medio,prev_n,prev_negativas
 2023-08-28,Comida y bebidas,1,0,0.0,5.0,6,0
 2023-08-28,Habitaciones,5,3,0.6,1.8,8,3
 2023-08-28,Mantenimiento e instalaciones,2,2,1.0,1.0,1,1
-2023-08-28,Atención y personal,17,0,0.0,4.941176470588236,29,1
+2023-08-28,Atención y personal,17,0,0.0,4.9411764705882355,29,1
 2023-09-04,Habitaciones,5,3,0.6,1.8,7,3
 2023-09-04,Atención y personal,18,0,0.0,4.944444444444445,30,1
 2023-09-04,Comida y bebidas,1,0,0.0,5.0,6,0
@@ -999,14 +999,14 @@ week,topic,n,negativas,pct_negativas,rating_medio,prev_n,prev_negativas
 2025-08-04,Atención y personal,5,1,0.2,4.0,6,1
 2025-08-11,Mantenimiento e instalaciones,1,1,1.0,1.0,1,0
 2025-08-11,Atención y personal,6,1,0.1666666666666666,4.166666666666667,5,1
-2025-08-11,Comida y bebidas,3,1,0.3333333333333333,3.333333333333333,2,1
+2025-08-11,Comida y bebidas,3,1,0.3333333333333333,3.3333333333333335,2,1
 2025-08-11,Habitaciones,3,3,1.0,1.0,4,2
-2025-08-18,Comida y bebidas,3,1,0.3333333333333333,3.333333333333333,2,1
+2025-08-18,Comida y bebidas,3,1,0.3333333333333333,3.3333333333333335,2,1
 2025-08-18,Atención y personal,6,1,0.1666666666666666,4.166666666666667,5,1
 2025-08-18,Habitaciones,2,2,1.0,1.0,5,3
 2025-08-25,Habitaciones,2,2,1.0,1.0,5,3
 2025-08-25,Atención y personal,6,1,0.1666666666666666,4.166666666666667,5,1
-2025-08-25,Comida y bebidas,3,1,0.3333333333333333,3.333333333333333,2,1
+2025-08-25,Comida y bebidas,3,1,0.3333333333333333,3.3333333333333335,2,1
 2025-09-01,Atención y personal,6,1,0.1666666666666666,4.166666666666667,4,1
 2025-09-01,Comida y bebidas,2,1,0.5,2.5,3,1
 2025-09-01,Habitaciones,2,2,1.0,1.0,5,3
