@@ -6,7 +6,7 @@
 """
 import argparse
 
-from reviewpulse import classify, config
+from reviewpulse import classify, config, manifest
 from reviewpulse.data import load_reviews, load_model_split
 
 if __name__ == "__main__":
@@ -17,6 +17,8 @@ if __name__ == "__main__":
 
     todas, train, test = load_reviews(), load_model_split(
         "train"), load_model_split("test")
+    manifest.write("train.csv + test.csv (300)" if a.all else "train.csv",
+                   len(todas) if a.all else len(train), incluye_test=a.all)
     classify.train(todas if a.all else train)
     metricas = {"modelo_guardado_entrenado_con": len(todas) if a.all else len(train),
                 "validacion_cruzada_300": classify.evaluate(todas),

@@ -8,3 +8,4 @@ ipykernel>=6.29
 scipy
 scikit-learn
 pytest
+tabulate

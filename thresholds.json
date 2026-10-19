@@ -1,0 +1,67 @@
+{
+  "fijado_el": "2026-10-18",
+  "nota": "Umbrales y fórmulas fijados ANTES de ejecutar evaluate.py.",
+  "semillas": [0, 1, 2, 3, 4],
+  "medidas": {
+    "M1": {
+      "nombre": "Exactitud de polaridad (escala 1 a 5)",
+      "formula": "aciertos / reseñas evaluadas, 300 reseñas con predicción fuera de muestra",
+      "op": ">=", "umbral": 0.85
+    },
+    "M1R": {
+      "nombre": "Exactitud de polaridad reformulada (negativa / neutra / positiva)",
+      "formula": "aciertos / reseñas evaluadas tras agrupar 1-2, 3, 4-5",
+      "op": ">=", "umbral": 0.85
+    },
+    "M2": {
+      "nombre": "Exactitud del tema principal (estricta)",
+      "formula": "reseñas cuyo tema predicho = tema principal etiquetado / total",
+      "op": ">=", "umbral": 0.8
+    },
+    "M2R": {
+      "nombre": "Exactitud del tema principal (permisiva)",
+      "formula": "reseñas cuyo tema predicho está entre los temas etiquetados de la reseña / total",
+      "op": ">=", "umbral": 0.8
+    },
+    "M1D": {
+      "nombre": "Exactitud de polaridad (1 a 5) del modelo guardado en models/ sobre test.csv",
+      "formula": "aciertos / 90 reseñas de test.csv, solo si models/ se entrenó únicamente con train.csv",
+      "op": ">=", "umbral": 0.85
+    },
+    "M2D": {
+      "nombre": "Exactitud del tema (estricta) del modelo guardado en models/ sobre test.csv",
+      "formula": "tema predicho = tema principal / 90 reseñas de test.csv, solo si models/ se entrenó únicamente con train.csv",
+      "op": ">=", "umbral": 0.8
+    },
+    "M3D": {
+      "nombre": "Detección de incrementos significativos de negativas (escenarios controlados)",
+      "formula": "escenarios con pico inyectado en los que el agente alertó / escenarios con pico inyectado",
+      "op": ">=", "umbral": 0.8
+    },
+    "M3F": {
+      "nombre": "Falsos positivos (escenarios de control)",
+      "formula": "escenarios sin pico en los que el agente alertó / escenarios sin pico",
+      "op": "<", "umbral": 0.15
+    },
+    "M3RD": {
+      "nombre": "Detección en prueba retrospectiva sobre el histórico",
+      "formula": "semanas con alerta verdadera (calculada con los ratings reales) en que el agente alertó / semanas con alerta verdadera",
+      "op": ">=", "umbral": 0.8
+    },
+    "M3RF": {
+      "nombre": "Falsos positivos en prueba retrospectiva",
+      "formula": "semanas sin alerta verdadera en que el agente alertó / semanas sin alerta verdadera evaluables",
+      "op": "<", "umbral": 0.15
+    },
+    "R1": {
+      "nombre": "Robustez ante condiciones excepcionales",
+      "formula": "casos de falla esperada manejados correctamente (sin caerse ni inventar datos) / casos de falla esperada",
+      "op": ">=", "umbral": 1.0
+    }
+  },
+  "definiciones": {
+    "pico_inyectado": "k reseñas negativas reales agregadas a una semana. k_min = menor k que dispara alerta calculando con los ratings reales; moderado = ceil(1.5 * k_min), grande = 3 * k_min.",
+    "control": "las mismas semanas sin inyectar nada; la verdad es que no hay alerta (calculado con los ratings reales).",
+    "entorno_estocastico": "en los escenarios del agente, en el de default: la fuente falla con p=0.2 por consulta y 10% de reseñas llegan sin fecha."
+  }
+}
