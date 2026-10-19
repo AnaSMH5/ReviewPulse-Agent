@@ -22,7 +22,7 @@ Autores:
 
 ## 1. Instalación
 
-Requiere Python 3.10 o superior (probado con 3.12).
+Requiere Python 3.10 o superior (probado con 3.12). Comprobar version con `python --version`
 
 ```powershell
 # Windows (PowerShell)
@@ -87,6 +87,7 @@ ReviewPulse-Agent/
 ├── thresholds.json     fórmulas y umbrales, fijados ANTES de ejecutar evaluate.py
 ├── make_queue.py       clasifica reseñas nuevas y manda a revisión las dudosas
 ├── retrain.py          reentrena con las correcciones y solo acepta el modelo si no empeora
+├── registro_fase3.py   registro reproducible de las pruebas oficiales
 ├── reviewpulse/
 │   ├── agent.py        el agente: estados, acciones, percepción / decisión / acción y log
 │   ├── source.py       fuente simulada de reseñas (el entorno)
@@ -110,7 +111,8 @@ ReviewPulse-Agent/
 
 ## 4. Cómo funciona el agente
 
-Cada semana el agente recorre estos estados (formalización AIMA del documento de diseño). Una sola acción está disponible en cada estado; la que ramifica es el resultado de ejecutarla.
+Cada semana el agente recorre estos estados (formalización AIMA del documento de diseño). 
+Una sola acción está disponible en cada estado; la que ramifica es el resultado de ejecutarla.
 
 | Estado | Acción | Siguiente estado |
 |---|---|---|

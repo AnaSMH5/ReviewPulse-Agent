@@ -1,0 +1,17 @@
+{
+  "valido": true,
+  "motivo": "modelos entrenados solo con train.csv y sin cambios posteriores",
+  "manifest": {
+    "ts": "2026-10-19T03:00:55+00:00",
+    "entrenado_con": "train.csv",
+    "n_entrenamiento": 210,
+    "incluye_test": false,
+    "sha256": {
+      "polarity.joblib": "05c38d006b3794cc158009ce8daa654d7b9cb3434c9939a1c7c09ddd47b2e69a",
+      "topic.joblib": "6335d993a7d20efa8d1b8c768dd26d48b07eaa3368362a197e9a5b48c5baddb2"
+    }
+  },
+  "n": 90,
+  "polaridad_1a5": 0.6666666666666666,
+  "tema_estricta": 0.5111111111111111
+}

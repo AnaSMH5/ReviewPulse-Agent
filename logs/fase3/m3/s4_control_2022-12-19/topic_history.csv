@@ -1,0 +1,5 @@
+week,topic,n,negativas,pct_negativas,rating_medio,prev_n,prev_negativas
+2022-12-19,Check-in / Check-out y reservas,1,1,1.0,1.0,0,0
+2022-12-19,Comida y bebidas,1,1,1.0,1.0,3,1
+2022-12-19,Atención y personal,20,1,0.05,4.7,4,3
+2022-12-19,Habitaciones,7,1,0.14285714285714285,3.857142857142857,6,4

@@ -1,0 +1,2 @@
+week,status,alert,reason,cur_n,cur_negativas,cur_pct_negativas,cur_rating_medio,prev_n,prev_negativas,prev_pct_negativas,prev_rating_medio,delta_pct_negativas,p_value,generated_at
+2021-07-19,normal,False,,39,9,0.23076923076923078,3.8461538461538463,19,2,0.10526315789473684,4.315789473684211,0.12550607287449395,0.21956258105063758,2026-10-19T03:25:28+00:00

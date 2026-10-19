@@ -1,0 +1,2 @@
+week,status,alert,reason,cur_n,cur_negativas,cur_pct_negativas,cur_rating_medio,prev_n,prev_negativas,prev_pct_negativas,prev_rating_medio,delta_pct_negativas,p_value,generated_at
+2023-11-06,alerta,True,Negativas 10% -> 33% (p=0.005),57,19,0.3333333333333333,3.5789473684210527,48,5,0.10416666666666667,4.416666666666667,0.22916666666666663,0.0045477044020412125,2026-10-19T03:25:50+00:00

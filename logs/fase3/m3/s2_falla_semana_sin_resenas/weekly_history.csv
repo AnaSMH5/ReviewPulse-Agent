@@ -1,0 +1,2 @@
+week,status,alert,reason,cur_n,cur_negativas,cur_pct_negativas,cur_rating_medio,prev_n,prev_negativas,prev_pct_negativas,prev_rating_medio,delta_pct_negativas,p_value,generated_at
+2021-03-22,sin_reseñas,False,Semana sin reseñas nuevas; se muestra el estado de las ventanas vigentes.,35,4,0.11428571428571428,4.114285714285714,1,0,0.0,3.0,,,2026-10-19T03:26:05+00:00

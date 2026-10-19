@@ -12,6 +12,8 @@ import json
 import os
 from datetime import datetime, timezone
 from pathlib import Path
+import tempfile
+import time
 
 import pandas as pd
 
@@ -34,10 +36,38 @@ def _replace_week(path: Path, rows: list, week: str) -> None:
         viejas = pd.read_csv(path, dtype={"week": str})
         nuevas = pd.concat([viejas[viejas["week"] != week], nuevas], ignore_index=True)
     nuevas = nuevas.sort_values("week")
-    tmp = path.with_suffix(".csv.tmp")           # se escribe a un temporal y se renombra: nunca queda a medias
-    nuevas.to_csv(tmp, index=False, encoding="utf-8")
-    os.replace(tmp, path)
-
+    # Windows puede bloquear brevemente el archivo mientras lo inspeccionan
+    # Defender, OneDrive o Excel. Un temporal único evita colisiones entre
+    # corridas y el descriptor se cierra antes del reemplazo atómico.
+    fd, tmp_name = tempfile.mkstemp(
+        prefix=f"{path.name}.", suffix=".tmp", dir=path.parent
+    )
+    tmp = Path(tmp_name)
+    os.close(fd)
+    try:
+        nuevas.to_csv(tmp, index=False, encoding="utf-8")
+        ultimo_error = None
+        for intento in range(5):
+            try:
+                os.replace(tmp, path)
+                ultimo_error = None
+                break
+            except PermissionError as error:
+                ultimo_error = error
+                if intento == 4:
+                    raise PermissionError(
+                        f"No se pudo reemplazar {path}. Cierra Excel o cualquier "
+                        "visor que tenga abierto el CSV y vuelve a ejecutar."
+                    ) from error
+                time.sleep(0.25 * (intento + 1))
+        if ultimo_error is not None:
+            raise ultimo_error
+    finally:
+        # Si os.replace tuvo éxito, el temporal ya no existe.
+        try:
+            tmp.unlink()
+        except FileNotFoundError:
+            pass
 
 def save_run(report: dict, history_dir=None) -> dict:
     """Guarda fila semanal, filas por tema y el resumen en texto."""
